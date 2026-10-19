@@ -1,0 +1,26 @@
+[
+  {
+    "id": "KR-2026-0412",
+    "device": "Meridian 15 (2021)",
+    "issue": "Overheating, fan noise",
+    "step": "in_repair",
+    "updatedAt": "2026-10-02T10:20:00+05:30",
+    "note": "Fan replaced. Repaste in progress."
+  },
+  {
+    "id": "KR-2026-0398",
+    "device": "Kestrel 14 Air",
+    "issue": "No power",
+    "step": "awaiting_approval",
+    "updatedAt": "2026-10-01T16:05:00+05:30",
+    "note": "Shorted capacitor on the charging circuit. Quote sent by SMS."
+  },
+  {
+    "id": "KR-2026-0371",
+    "device": "Tern 14",
+    "issue": "Cracked screen",
+    "step": "ready",
+    "updatedAt": "2026-09-30T13:45:00+05:30",
+    "note": "New panel fitted and tested. Ready at the counter."
+  }
+]

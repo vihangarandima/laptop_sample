@@ -1,0 +1,68 @@
+[
+  {
+    "id": "kn-14-air",
+    "name": "Kestrel 14 Air",
+    "condition": "new",
+    "grade": "New",
+    "price": 289000,
+    "warrantyMonths": 24,
+    "specs": { "cpu": "8-core mobile CPU", "ram": "16 GB", "storage": "512 GB NVMe", "display": "14\" 2.2K IPS" },
+    "look": { "body": "#a7abb0", "scale": 0.94, "screen": "desktop" },
+    "inStock": true
+  },
+  {
+    "id": "kn-16-pro",
+    "name": "Kestrel 16 Pro",
+    "condition": "new",
+    "grade": "New",
+    "price": 468000,
+    "warrantyMonths": 24,
+    "specs": { "cpu": "12-core mobile CPU", "ram": "32 GB", "storage": "1 TB NVMe", "display": "16\" 2.5K 165 Hz" },
+    "look": { "body": "#3b3f44", "scale": 1.06, "screen": "code" },
+    "inStock": true
+  },
+  {
+    "id": "ms-13-ref",
+    "name": "Meridian 13",
+    "condition": "refurbished",
+    "grade": "A+",
+    "price": 142000,
+    "warrantyMonths": 6,
+    "specs": { "cpu": "4-core mobile CPU", "ram": "16 GB", "storage": "256 GB NVMe", "display": "13.3\" FHD", "battery": "Health 92%" },
+    "look": { "body": "#c9c4ba", "scale": 0.9, "screen": "photo" },
+    "inStock": true
+  },
+  {
+    "id": "ms-15-ref",
+    "name": "Meridian 15 Work",
+    "condition": "refurbished",
+    "grade": "A",
+    "price": 118000,
+    "warrantyMonths": 6,
+    "specs": { "cpu": "4-core mobile CPU", "ram": "8 GB", "storage": "512 GB SSD", "display": "15.6\" FHD", "battery": "New cell" },
+    "look": { "body": "#2a2d31", "scale": 1.02, "screen": "desktop" },
+    "inStock": true
+  },
+  {
+    "id": "tr-14-ref",
+    "name": "Tern 14 Student",
+    "condition": "refurbished",
+    "grade": "B",
+    "price": 79000,
+    "warrantyMonths": 3,
+    "specs": { "cpu": "4-core mobile CPU", "ram": "8 GB", "storage": "256 GB SSD", "display": "14\" HD+", "battery": "Health 85%" },
+    "look": { "body": "#5d6670", "scale": 0.96, "screen": "dark" },
+    "inStock": true
+  },
+  {
+    "id": "tr-15-new",
+    "name": "Tern 15 Everyday",
+    "condition": "new",
+    "grade": "New",
+    "price": 176000,
+    "warrantyMonths": 12,
+    "specs": { "cpu": "6-core mobile CPU", "ram": "16 GB", "storage": "512 GB NVMe", "display": "15.6\" FHD IPS" },
+    "look": { "body": "#8e96a0", "scale": 1.02, "screen": "photo" },
+    "inStock": false
+  }
+]

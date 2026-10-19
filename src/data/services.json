@@ -1,0 +1,50 @@
+[
+  {
+    "id": "battery",
+    "part": "battery",
+    "name": "Battery replacement",
+    "summary": "We test the old pack, fit a quality cell and calibrate it so the percentage tells the truth.",
+    "turnaround": "Same day",
+    "fromPrice": 0
+  },
+  {
+    "id": "storage-memory",
+    "part": "ssd",
+    "name": "Upgrades & data recovery",
+    "summary": "Faster SSDs and more RAM, with your files moved across. Failing drive? We recover what can be recovered.",
+    "turnaround": "Same day · recovery 2–5 days",
+    "fromPrice": 0
+  },
+  {
+    "id": "thermal",
+    "part": "fan",
+    "name": "Thermal clean & repaste",
+    "summary": "Dust out, fan bearings checked, fresh thermal compound. Cooler, quieter, faster under load.",
+    "turnaround": "2–4 hours",
+    "fromPrice": 0
+  },
+  {
+    "id": "board",
+    "part": "motherboard",
+    "name": "Chip-level board repair",
+    "summary": "No power, no display, shorted rails. We repair the faulty component instead of replacing the whole board.",
+    "turnaround": "3–7 days",
+    "fromPrice": null
+  },
+  {
+    "id": "input",
+    "part": "keyboardDeck",
+    "name": "Keyboard, trackpad & liquid damage",
+    "summary": "Sticky or dead keys, unresponsive trackpads and spills. Bring it in powered off, as soon as you can.",
+    "turnaround": "1–3 days",
+    "fromPrice": 0
+  },
+  {
+    "id": "display",
+    "part": "display",
+    "name": "Screen & hinge replacement",
+    "summary": "Cracked panels, flicker, dead backlights and loose hinges, matched to your exact model.",
+    "turnaround": "1–2 days with part in stock",
+    "fromPrice": 0
+  }
+]

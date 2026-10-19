@@ -1,0 +1,136 @@
+@import "tailwindcss";
+
+/* Colour values come from src/config/brand.ts (set as CSS variables on <html>).
+   These are only fallbacks. */
+:root {
+  --bg: #0b0c0d;
+  --surface: #141618;
+  --line: #24272b;
+  --text: #ecebe6;
+  --muted: #9a9a95;
+  --accent: #5fe3ff;
+  --warning: #ff5a36;
+  --book-h: 56px;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-line: var(--line);
+  --color-text: var(--text);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-warning: var(--warning);
+  --font-display: var(--font-display-face), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-sans-face), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-mono-face), ui-monospace, monospace;
+}
+
+html {
+  overflow-x: clip;
+  background: var(--bg);
+  color: var(--text);
+  scroll-padding-bottom: calc(var(--book-h) + 32px);
+  -webkit-text-size-adjust: 100%;
+}
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection { background: var(--accent); color: var(--bg); }
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Display type: large and tight */
+.display {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: -0.035em;
+  line-height: 0.98;
+}
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* A soft graphite scrim behind copy that sits over the 3D scene, so contrast holds over bright parts. */
+.scrim {
+  background: radial-gradient(120% 100% at 0% 50%, color-mix(in oklab, var(--bg) 78%, transparent) 0%, color-mix(in oklab, var(--bg) 40%, transparent) 60%, transparent 100%);
+}
+.panel {
+  background: color-mix(in oklab, var(--surface) 88%, transparent);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+}
+@supports (backdrop-filter: blur(8px)) {
+  html[data-scene='scrub'] .panel { backdrop-filter: blur(10px); background: color-mix(in oklab, var(--surface) 72%, transparent); }
+}
+
+/* Phones: copy sits in the bottom third over the scene; a soft graphite ramp keeps it legible. */
+@media (max-width: 899px) {
+  html[data-scene='scrub'] .chapter-sticky::before,
+  html[data-scene='stills'] .chapter-sticky::before {
+    content: '';
+    position: absolute;
+    inset: auto 0 0 0;
+    height: 62%;
+    background: linear-gradient(to top, var(--bg) 30%, color-mix(in oklab, var(--bg) 70%, transparent) 60%, transparent);
+    pointer-events: none;
+    /* only the active chapter's ramp: a released sticky block scrolls up and would carry its ramp over the stage */
+    opacity: 0;
+    transition: opacity 0.35s ease;
+  }
+  html[data-scene='scrub'] section[data-active] > .chapter-sticky::before,
+  html[data-scene='stills'] section[data-active] > .chapter-sticky::before { opacity: 1; }
+  .chapter-sticky > * { position: relative; }
+}
+
+/* --- story modes --------------------------------------------------------
+   static (no WebGL / no JS): show pre-rendered stills inside each chapter.
+   scrub / stills: the live canvas sits behind the page. */
+.scene-still { display: none; }
+html:not([data-scene]) .scene-still,
+html[data-scene='static'] .scene-still { display: block; }
+html:not([data-scene]) .chapter,
+html[data-scene='static'] .chapter { min-height: auto !important; height: auto !important; margin-bottom: 0 !important; }
+html:not([data-scene]) .chapter-sticky,
+html[data-scene='static'] .chapter-sticky { position: relative; height: auto; min-height: 0; padding-top: 4rem; padding-bottom: 4rem; }
+html[data-scene='static'] .boot,
+html:not([data-scene]) .boot { display: none; }
+
+/* Reduced motion: no scrubbing; chapter copy simply fades in while its chapter is active. */
+html[data-scene='stills'] [data-chapter-copy] { opacity: 0; transition: opacity 0.35s ease; }
+html[data-scene='stills'] section[data-active] [data-chapter-copy] { opacity: 1; }
+
+/* Preloader failsafe: if JS never hides it, CSS does after 4 s. */
+.boot { animation: boot-failsafe 0.4s ease 4s forwards; }
+@keyframes boot-failsafe { to { opacity: 0; visibility: hidden; } }
+.boot[data-done='true'] { opacity: 0; visibility: hidden; transition: opacity 0.6s ease, visibility 0s linear 0.6s; }
+
+.caret::after { content: '▍'; animation: caret 1s steps(1) infinite; color: var(--accent); }
+@keyframes caret { 50% { opacity: 0; } }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* custom cursor only on fine pointers */
+@media (hover: hover) and (pointer: fine) {
+  html[data-scene='scrub'][data-cursor='on'] body, html[data-scene='scrub'][data-cursor='on'] a, html[data-scene='scrub'][data-cursor='on'] button { cursor: none; }
+}
